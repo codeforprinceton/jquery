@@ -1,0 +1,22 @@
+{
+  "name": "cfp-jquery",
+  "version": "1.0.0",
+  "description": "Code For Princeton jQuery class",
+  "main": "contentful.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeforprinceton/jquery.git"
+  },
+  "author": "shaun@sdellis.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeforprinceton/jquery/issues"
+  },
+  "homepage": "https://github.com/codeforprinceton/jquery#readme",
+  "dependencies": {
+    "requirejs": "^2.3.4"
+  }
+}
