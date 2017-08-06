@@ -25,6 +25,7 @@
 
     <!-- The following file can be useful for overriding Bootstrap's styles -->
     <link rel="stylesheet" href="override.css">
+    <script type="text/javascript" src="scripts/bundle.js"></script>
   </head>
   <body>
 
@@ -71,45 +72,7 @@
   <!-- Here we can see the difference between a fluid and fixed-width container by adjusting our browser size. -->
   <div class="container gallery">
     <h1>Photo Gallery</h1>
-    <div class="row">
-      <div class="col-md-3 col-sm-6">
-        <img src="img/photo1.png" alt="Sandia Mountains" class="img-thumbnail">
-        <div class="likes">
-          <p>
-            <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-heart"></span> Like</button>
-            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</button>
-          </p>
-        </div>
-
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <img src="img/photo2.png" alt="Moon Set" class="img-thumbnail">
-        <div class="likes">
-          <p>
-            <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-heart"></span> Like</button>
-            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</button>
-          </p>
-        </div>
-      </div>
-       <div class="col-md-3 col-sm-6">
-        <img src="img/photo3.png" alt="Datura Flower" class="img-thumbnail">
-        <div class="likes">
-          <p>
-            <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-heart"></span> Like</button>
-            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</button>
-          </p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-       <img src="img/photo4.png" alt="Joshua Tree" class="img-thumbnail">
-       <div class="likes">
-         <p>
-           <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-heart"></span> Like</button>
-           <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</button>
-         </p>
-       </div>
-     </div>
-    </div>
+    <div id="photo-row" class="row"></div>
   </div>
 
     <!-- Modal Content -->
@@ -155,5 +118,6 @@
 
     <!-- My custom js -->
     <script src="script.js"></script>
+
   </body>
 </html>
