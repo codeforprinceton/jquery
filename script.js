@@ -32,7 +32,8 @@ function renderPhotos (data) {
         var $div = $("<div>", {id: photo.fields.slug[lang], "class": "col-md-3 col-sm-6"})
         var $buttons_div = $("<div>", {"class": "likes"})
         var $p = $("<p></p>")
-        var $like_button = $('<button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-heart"></span> Like</button>')
+        var $like_button = $('<button type="button" id="' + photo.sys.id + '" class="btn btn-primary btn-sm like-button" value="' + photo.fields.likes[lang] +
+                            '"><span class="glyphicon glyphicon-heart"></span> <span class="likenum">' + photo.fields.likes[lang] + '</span></button>')
         var $comment_button = $('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</button>')
         var $title = $("<h2>" + photo.fields.title[lang] + "</h2>")
         var $img = $("<img>", {"class": "img-thumbnail"})
@@ -50,3 +51,19 @@ function renderPhotos (data) {
     });
   });
 }
+
+// increment likes
+$(document).on("click", ".like-button", function(){
+  // Update entry
+  client.getSpace(space_id)
+  .then((space) => space.getEntry(this.id))
+  .then((entry) => {
+    entry.fields.likes['en-US'] = entry.fields.likes['en-US'] + 1
+    return entry.update()
+  })
+  .then((entry) => {
+    $('#' + this.id + ' .likenum').text(entry.fields.likes['en-US'])
+    console.log(`Entry ${entry.sys.id} updated.`)
+  })
+  .catch(console.error)
+});
