@@ -12,18 +12,16 @@ var client = contentful.createClient({
   accessToken: accessToken
 })
 
+client.getSpace(space_id)
+.then((space) => space.getEntries(query))
+.then((response) => renderPhotos(response.items))
+.catch(console.error)
+
 function assetEndpoint(asset_id) {
   return assetAPI.replace("<asset_id>", asset_id);
 }
 
-client.getSpace(space_id)
-.then((space) => space.getEntries({ content_type: '1xYw5JsIecuGE68mmGMg20' }))
-.then((response) => renderPhotos(response.items))
-.catch(console.error)
-
 function renderPhotos (data) {
-  console.log(data)
-  window.data = data
   $.each( data, function( i, item ){
     var img_url = "https:"
     if( item.fields.hasOwnProperty('photo') ){
@@ -34,9 +32,13 @@ function renderPhotos (data) {
           var $div = $("<div>", {id: photo.fields.slug[lang], "class": "col-md-3 col-sm-6"})
           var $buttons_div = $("<div>", {"class": "likes"})
           var $p = $("<p></p>")
-          var $like_button = $('<button type="button" id="' + photo.sys.id + '" class="btn btn-primary btn-sm like-button" value="' + photo.fields.likes[lang] +
-                              '"><span class="glyphicon glyphicon-heart"></span> <span class="likenum">' + photo.fields.likes[lang] + '</span></button>')
-          var $comment_button = $('<button type="button" id="' + photo.sys.id + '" class="btn btn-default btn-sm comment-button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</button>')
+          var $like_button = $('<button type="button" id="' + photo.sys.id +
+                              '" class="btn btn-primary btn-sm like-button" value="' + photo.fields.likes[lang] +
+                              '"><span class="glyphicon glyphicon-heart"></span> <span class="likenum">' +
+                              photo.fields.likes[lang] + '</span></button>')
+          var $comment_button = $('<button type="button" id="' + photo.sys.id +
+                              '" class="btn btn-default btn-sm comment-button" data-toggle="modal"' +
+                              ' data-target="#myModal"><span class="glyphicon glyphicon-comment"></span> Comment</button>')
           var $title = $("<h2>" + photo.fields.title[lang] + "</h2>")
           var $img = $("<img>", {"class": "img-thumbnail"})
           $p.append($like_button,$comment_button)
