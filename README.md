@@ -1,5 +1,4 @@
-# jquery
-Idea2App: Putting it all together with jQuery
+# Idea2App: Putting it all together with jQuery
 
 Sign In - https://goo.gl/EJLm4f
 
